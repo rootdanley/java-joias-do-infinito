@@ -1,4 +1,4 @@
-package com.danley.jogojoiasdoinfinito;
+package com.joias.demo;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
