@@ -14,6 +14,9 @@ public class InicioController {
     private Button btnRanking;
 
     @FXML
+    private Button btnJogar;
+
+    @FXML
     private void onRankingButtonClick() throws IOException {
         Parent selecaoRanking = FXMLLoader.load(getClass().getResource("/org/joias/projeto/ranking.fxml"));
 
@@ -21,5 +24,14 @@ public class InicioController {
 
         Scene selecaoRankingScene = new Scene(selecaoRanking);
         window.setScene(selecaoRankingScene);
+    }
+
+    @FXML
+    private void onJogarButtonClick() throws IOException {
+        Parent selecaoJogar = FXMLLoader.load(getClass().getResource("/org/joias/projeto/selecaoJogadores.fxml"));
+
+        Stage window = (Stage) btnJogar.getScene().getWindow();
+        Scene selecaoJogarScene = new Scene(selecaoJogar);
+        window.setScene(selecaoJogarScene);
     }
 }
