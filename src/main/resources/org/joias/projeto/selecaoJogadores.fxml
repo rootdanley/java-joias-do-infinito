@@ -1,35 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.joias.projeto.controllers.SelecaoJogadoresController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="edges" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.joias.projeto.controllers.SelecaoJogadoresController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc1fff1b" height="98.0" layoutX="152.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="977.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="98.0" layoutX="152.0" layoutY="245.0" stroke="BLACK" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" width="977.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9700000286102295" green="0.07760000228881836" blue="0.16684000194072723" opacity="0.9567432999610901" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4899328859060403">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.07760000228881836" green="0.41125527024269104" blue="0.9700000286102295" opacity="0.9599999785423279" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="50.65" radius="12.1625" width="0.0">
+               <color>
+                  <Color opacity="0.2260536402463913" />
+               </color>
+            </DropShadow>
+         </effect></Rectangle>
       <Circle fill="#4d289e" layoutX="640.0" layoutY="294.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Text fill="WHITE" layoutX="580.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VS">
          <font>
-            <Font name="Bauhaus 93" size="130.0" />
+            <Font name="Inconsolata" size="130.0" />
          </font>
       </Text>
-      <Text layoutX="152.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 1">
-         <font>
-            <Font name="Agency FB Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="1050.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 2">
-         <font>
-            <Font name="Agency FB Bold" size="18.0" />
-         </font>
-      </Text>
+      <Group layoutX="152.0" layoutY="197.0">
+         <children>
+            <Text layoutX="33.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 1">
+               <font>
+                  <Font name="Agency FB Bold" size="18.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fa39393d" height="35.0" stroke="BLACK" strokeType="INSIDE" width="148.0" />
+         </children>
+      </Group>
       <Button layoutX="490.0" layoutY="437.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="302.0" styleClass="primary-button" stylesheets="@style/style.css" text="INICIAR">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
+      <Button fx:id="btnVoltar" onAction="#onVoltarButtonClick" layoutX="490.0" layoutY="504.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="302.0" styleClass="secondary-button" stylesheets="@style/style.css" text="VOLTAR">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Button>
+      <Group layoutX="981.0" layoutY="197.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" width="148.0" />
+            <Text layoutX="33.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 2">
+               <font>
+                  <Font name="Agency FB Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
    </children>
 </AnchorPane>
