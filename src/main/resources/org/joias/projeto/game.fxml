@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.joias.projeto.style.Game">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%202.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="349.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%202.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="102.0" fitWidth="507.0" layoutX="47.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%205.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="40.0" layoutX="37.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%206.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="120.0" fitWidth="76.0" layoutX="51.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%207.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="116.0" fitWidth="76.0" layoutX="139.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%208.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="76.0" layoutX="397.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%209.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="76.0" layoutX="224.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%2010.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="84.0" layoutX="311.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%2011.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="102.0" fitWidth="76.0" layoutX="473.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Group%2012.png" />
+         </image>
+      </ImageView>
+      <Line endX="234.0" layoutX="313.0" layoutY="132.0" opacity="0.54" startX="-262.0" strokeWidth="0.5" />
+      <ImageView fitHeight="25.0" fitWidth="60.0" layoutX="265.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Rich%20Tooltip%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="17.0" fitWidth="40.0" layoutX="89.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Sua%20vez.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="16.0" fitWidth="141.0" layoutX="226.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Selecione%20uma%20joia.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
