@@ -1,4 +1,4 @@
-package org.joias.projeto.utils;
+package org.joias.projeto.utilidades;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

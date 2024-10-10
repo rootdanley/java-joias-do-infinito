@@ -1,12 +1,8 @@
 package org.joias.projeto.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
-import org.joias.projeto.utils.SceneManager;
+import org.joias.projeto.utilidades.SceneManager;
 
 import java.io.IOException;
 
@@ -18,6 +14,7 @@ public class InicioController {
     private Button btnJogar;
 
 
+
     @FXML
     private void onRankingButtonClick() throws IOException {
         SceneManager.changeScene("/org/joias/projeto/ranking.fxml");
@@ -25,7 +22,7 @@ public class InicioController {
 
     @FXML
     private void onJogarButtonClick() throws IOException {
-        SceneManager.changeScene("/org/joias/projeto/selecaoJogadores.fxml");
+        SceneManager.changeScene("/org/joias/projeto/selecaoPersonagem.fxml");
     }
 
 }

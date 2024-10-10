@@ -7,4 +7,7 @@ module org.joias.projeto {
 
     // Abre o pacote 'controllers' para o módulo 'javafx.fxml'
     opens org.joias.projeto.controllers to javafx.fxml;
+
+    // Abre o pacote 'models' para o módulo 'javafx.base' para que o PropertyValueFactory possa acessar as propriedades
+    opens org.joias.projeto.models to javafx.base;
 }

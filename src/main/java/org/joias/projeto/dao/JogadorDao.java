@@ -1,7 +1,6 @@
 package org.joias.projeto.dao;
 
 import org.joias.projeto.models.Jogador;
-import org.joias.projeto.models.Ranking;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class JogadorDao {
         // TODO
     }
 
-    public List<Ranking> buscarRanking() {
+    public List<VencedorDAO> buscarRanking() {
         // TODO
         return null;
     }
