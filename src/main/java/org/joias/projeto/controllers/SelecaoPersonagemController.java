@@ -41,10 +41,15 @@ public class SelecaoPersonagemController {
 
     private int jogadorAtual = 1;
     private String personagemSelecionado = null;
+    private String personagemJogador1 = null;
+    private String personagemJogador2 = null;
     private Set<String> personagensEscolhidos = new HashSet<>();
 
     @FXML
     public void initialize() {
+        botaoIniciarPartida.setDisable(true);  // Botão começa desabilitado
+
+        // Carregar as imagens dos personagens
         try {
             imagemPantera.setImage(new Image(getClass().getResource("/pantera_negra.png").toExternalForm()));
             imagemFeiticeira.setImage(new Image(getClass().getResource("/feiticeira_escarlate.png").toExternalForm()));
@@ -76,18 +81,20 @@ public class SelecaoPersonagemController {
     private void onSelecionarHeroi() {
         if (personagemSelecionado != null) {
             personagensEscolhidos.add(personagemSelecionado);
-            desabilitarPersonagemSelecionado();
 
             if (jogadorAtual == 1) {
+                personagemJogador1 = personagemSelecionado;
                 jogadorAtual = 2;
                 tituloJogador.setText("Jogador #2, selecione seu herói");
+                desabilitarPersonagemSelecionado();
                 personagemSelecionado = null;
             } else {
-                botaoIniciarPartida.setVisible(true);
+                personagemJogador2 = personagemSelecionado;
+                desabilitarPersonagemSelecionado();
+                botaoIniciarPartida.setDisable(false);
                 botaoSelecionar.setDisable(true);
                 botaoVoltar.setDisable(true);
                 tituloJogador.setText("Clique em 'Iniciar Partida' para começar!");
-
             }
 
             botaoSelecionar.setDisable(true);
@@ -95,6 +102,7 @@ public class SelecaoPersonagemController {
             tituloJogador.setText("Por favor, selecione um herói.");
         }
     }
+
 
     @FXML
     private void onVoltar() {
@@ -143,9 +151,15 @@ public class SelecaoPersonagemController {
 
     @FXML
     private void iniciarPartida() {
-        System.out.println("Hora do show: " + personagensEscolhidos);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/org/joias/projeto/partida.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/joias/projeto/partida.fxml"));
+            Parent root = loader.load();
+
+            // Passa os personagens selecionados para o controlador da tela de partida
+            PartidaController partidaController = loader.getController();
+            partidaController.setPersonagensJogadores(personagemJogador1, personagemJogador2);
+
+            // Exibe a tela de partida
             Stage stage = (Stage) botaoIniciarPartida.getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (IOException e) {

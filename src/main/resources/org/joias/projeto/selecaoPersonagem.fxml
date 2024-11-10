@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.joias.projeto.controllers.SelecaoPersonagemController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.joias.projeto.controllers.SelecaoPersonagemController">
    <children>
       <!-- Título do Jogador -->
       <Label fx:id="tituloJogador" layoutX="523.0" layoutY="38.0" styleClass="label-titulo-jogador" text="Jogador #1 Selecione seu herói" />
@@ -42,15 +43,21 @@
       </HBox>
 
       <!-- Botões de Ação -->
-      <VBox alignment="CENTER" layoutX="520.0" layoutY="500.0" spacing="15">
-         <children>
-            <Button fx:id="botaoIniciarPartida" onAction="#iniciarPartida" styleClass="button-iniciar-partida" text="Iniciar Partida" visible="false" />
-         </children>
-      </VBox>
+      <VBox alignment="CENTER" layoutX="485.0" layoutY="483.0" spacing="15" />
 
       <!-- Botão Sair -->
       <Button fx:id="botaoSair" layoutX="22.0" layoutY="666.0" onAction="#onSair" prefHeight="30.0" prefWidth="119.0" styleClass="button-sair" text="Sair" />
-      <Button fx:id="botaoSelecionar" disable="true" layoutX="551.0" layoutY="389.0" onAction="#onSelecionarHeroi" prefHeight="35.0" prefWidth="203.0" styleClass="button-selecionar" text="Selecionar Herói" />
+      <Button fx:id="botaoSelecionar" disable="true" layoutX="551.0" layoutY="389.0" onAction="#onSelecionarHeroi" prefHeight="35.0" prefWidth="203.0" styleClass="button-voltar" stylesheets="@style/style.css" text="Selecionar Herói" />
       <Button fx:id="botaoVoltar" layoutX="551.0" layoutY="431.0" onAction="#onVoltar" prefHeight="39.0" prefWidth="203.0" styleClass="button-voltar" text="Voltar" />
+
+
+      <Button fx:id="botaoIniciarPartida" layoutX="500.0" layoutY="500.0" disable="true"
+              mnemonicParsing="false" onAction="#iniciarPartida" prefHeight="43.0" prefWidth="305.0"
+              styleClass="primary-button" stylesheets="@style/style.css" text="Iniciar Partida">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+
    </children>
 </AnchorPane>

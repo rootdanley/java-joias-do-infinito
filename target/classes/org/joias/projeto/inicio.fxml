@@ -19,5 +19,9 @@
             <Image url="@images/logo-do-projeto.png" />
          </image>
       </ImageView>
+
+      <!-- Botão Sair -->
+      <Button fx:id="botaoSair" layoutX="37.0" layoutY="655.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="118.0" styleClass="button-sair" stylesheets="@style/style.css" text="Sair" onAction="#onSair" />
+
    </children>
 </AnchorPane>
