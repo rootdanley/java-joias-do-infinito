@@ -63,7 +63,7 @@ public class SelecaoPersonagemController {
         imagemPantera.setOnMouseClicked(event -> selecionarPersonagem("Pantera Negra", imagemPantera));
         imagemFeiticeira.setOnMouseClicked(event -> selecionarPersonagem("Feiticeira Escarlate", imagemFeiticeira));
         imagemFerro.setOnMouseClicked(event -> selecionarPersonagem("Homem de Ferro", imagemFerro));
-        imagemViuva.setOnMouseClicked(event -> selecionarPersonagem("Viúva Negra", imagemViuva));
+        imagemViuva.setOnMouseClicked(event -> selecionarPersonagem("Viuva Negra", imagemViuva));
     }
 
     private void selecionarPersonagem(String personagem, ImageView imagemPersonagem) {
@@ -143,7 +143,7 @@ public class SelecaoPersonagemController {
         } else if (personagemSelecionado.equals("Homem de Ferro")) {
             imagemFerro.setEffect(desaturate);
             imagemFerro.setDisable(true);
-        } else if (personagemSelecionado.equals("Viúva Negra")) {
+        } else if (personagemSelecionado.equals("Viuva Negra")) {
             imagemViuva.setEffect(desaturate);
             imagemViuva.setDisable(true);
         }
