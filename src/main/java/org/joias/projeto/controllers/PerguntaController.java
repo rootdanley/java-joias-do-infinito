@@ -23,26 +23,30 @@ public class PerguntaController {
     private Scene telaPartidaScene;
     private Map<String, String[]> perguntasMock;
 
-    public void configurarPergunta(PartidaController partidaController, String joiaAtual) {
+    public void configurarPergunta(PartidaController partidaController, String joiaAtual, Scene telaPartidaScene) {
         this.partidaController = partidaController;
         this.joiaAtual = joiaAtual;
-        this.telaPartidaScene = partidaController.getScene(); // Obtém a cena da partida
+        this.telaPartidaScene = telaPartidaScene; // Armazena a cena da partida
         inicializarPerguntasMock();
         carregarPergunta();
     }
 
 
+
     private void inicializarPerguntasMock() {
         perguntasMock = new HashMap<>();
-        perguntasMock.put("Mente", new String[]{"Qual é a capital da França?", "Paris", "Londres", "Berlim"});
-        perguntasMock.put("Espaço", new String[]{"Qual é o maior planeta do sistema solar?", "Júpiter", "Saturno", "Terra"});
-        perguntasMock.put("Alma", new String[]{"Quem pintou a Mona Lisa?", "Leonardo da Vinci", "Picasso", "Van Gogh"});
-        perguntasMock.put("Poder", new String[]{"Quantos lados tem um hexágono?", "6", "8", "4"});
-        perguntasMock.put("Tempo", new String[]{"Quantos segundos tem um minuto?", "60", "100", "120"});
-        perguntasMock.put("Realidade", new String[]{"Qual é o elemento químico da água?", "H2O", "O2", "CO2"});
+        perguntasMock.put("mente", new String[]{"Qual é a capital da França?", "Paris", "Londres", "Berlim"});
+        perguntasMock.put("espaço", new String[]{"Qual é o maior planeta do sistema solar?", "Júpiter", "Saturno", "Terra"});
+        perguntasMock.put("alma", new String[]{"Quem pintou a Mona Lisa?", "Leonardo da Vinci", "Picasso", "Van Gogh"});
+        perguntasMock.put("poder", new String[]{"Quantos lados tem um hexágono?", "6", "8", "4"});
+        perguntasMock.put("tempo", new String[]{"Quantos segundos tem um minuto?", "60", "100", "120"});
+        perguntasMock.put("realidade", new String[]{"Qual é o elemento químico da água?", "H2O", "O2", "CO2"});
     }
 
+
     private void carregarPergunta() {
+        System.out.println("Carregando pergunta para a joia: " + joiaAtual); // Log para depuração
+
         String[] perguntaDados = perguntasMock.get(joiaAtual);
 
         if (perguntaDados != null) {
@@ -58,12 +62,15 @@ public class PerguntaController {
             opcao3.setOnAction(event -> verificarResposta(opcao3.getText()));
         } else {
             // Caso a pergunta não seja encontrada
+            System.out.println("Erro: Pergunta não encontrada para a joia " + joiaAtual); // Log para depuração
             perguntaLabel.setText("Erro: Pergunta não encontrada para a joia " + joiaAtual + ".");
             opcao1.setDisable(true);
             opcao2.setDisable(true);
             opcao3.setDisable(true);
         }
     }
+
+
 
     private void verificarResposta(String respostaEscolhida) {
         boolean acertou = respostaEscolhida.equals(respostaCorreta);
