@@ -8,30 +8,45 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.joias.projeto.controllers.PartidaController">
     <children>
-        <Label fx:id="contadorJoiasJogador1" text="0/6" />
+        <!-- Contador de Joias do Jogador 1 -->
+        <Label fx:id="contadorJoiasJogador1" layoutX="50" layoutY="20" text="0/6" style="-fx-font-size: 16px;" />
+        <!-- Contador de Joias do Jogador 2 -->
+        <Label fx:id="contadorJoiasJogador2" layoutX="500" layoutY="20" text="0/6" style="-fx-font-size: 16px;" />
 
-        <HBox alignment="CENTER" spacing="20" layoutX="20.0" layoutY="20.0">
+        <!-- Informações dos Jogadores -->
+        <HBox alignment="CENTER" spacing="20" layoutX="20.0" layoutY="50.0">
+            <!-- Jogador 1 -->
             <VBox alignment="CENTER" spacing="10">
                 <ImageView fx:id="imagemJogador1" fitHeight="80" fitWidth="80" />
                 <Label fx:id="nomeJogador1" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
                 <Label fx:id="vezJogador1" style="-fx-font-size: 14px; -fx-text-fill: green;" />
             </VBox>
+            <!-- VS -->
             <Label text="VS" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <!-- Jogador 2 -->
             <VBox alignment="CENTER" spacing="10">
                 <ImageView fx:id="imagemJogador2" fitHeight="80" fitWidth="80" />
                 <Label fx:id="nomeJogador2" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
                 <Label fx:id="vezJogador2" style="-fx-font-size: 14px; -fx-text-fill: green;" />
             </VBox>
         </HBox>
-        <HBox layoutX="20" layoutY="130" prefWidth="560" style="-fx-border-color: gray; -fx-border-width: 0 0 1 0;" />
-        <Label layoutX="200" layoutY="150" text="Selecione uma joia" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-        <HBox alignment="CENTER" layoutX="20" layoutY="180" spacing="10">
-            <Label fx:id="joiaMente" text="Mente" onMouseClicked="#selecionarJoia" />
-            <Label fx:id="joiaEspaco" text="Espaço" onMouseClicked="#selecionarJoia" />
-            <Label fx:id="joiaAlma" text="Alma" onMouseClicked="#selecionarJoia" />
-            <Label fx:id="joiaPoder" text="Poder" onMouseClicked="#selecionarJoia" />
-            <Label fx:id="joiaTempo" text="Tempo" onMouseClicked="#selecionarJoia" />
-            <Label fx:id="joiaRealidade" text="Realidade" onMouseClicked="#selecionarJoia" />
+        <HBox fx:id="inventarioJogador1" layoutX="50" layoutY="300" spacing="10" />
+        <HBox fx:id="inventarioJogador2" layoutX="500" layoutY="300" spacing="10" />
+
+        <!-- Separador -->
+        <HBox layoutX="20" layoutY="150" prefWidth="560" style="-fx-border-color: gray; -fx-border-width: 0 0 1 0;" />
+
+        <!-- Título de Seleção -->
+        <Label layoutX="200" layoutY="170" text="Selecione uma joia" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <!-- Joias Disponíveis -->
+        <HBox alignment="CENTER" layoutX="20" layoutY="200" spacing="10">
+            <Label fx:id="joiaMente" text="Joia da Mente" onMouseClicked="#selecionarJoia" style="-fx-border-color: black; -fx-padding: 10;" />
+            <Label fx:id="joiaEspaco" text="Joia do Espaço" onMouseClicked="#selecionarJoia" style="-fx-border-color: black; -fx-padding: 10;" />
+            <Label fx:id="joiaAlma" text="Joia da Alma" onMouseClicked="#selecionarJoia" style="-fx-border-color: black; -fx-padding: 10;" />
+            <Label fx:id="joiaPoder" text="Joia do Poder" onMouseClicked="#selecionarJoia" style="-fx-border-color: black; -fx-padding: 10;" />
+            <Label fx:id="joiaTempo" text="Joia do Tempo" onMouseClicked="#selecionarJoia" style="-fx-border-color: black; -fx-padding: 10;" />
+            <Label fx:id="joiaRealidade" text="Joia da Realidade" onMouseClicked="#selecionarJoia" style="-fx-border-color: black; -fx-padding: 10;" />
         </HBox>
     </children>
 </AnchorPane>

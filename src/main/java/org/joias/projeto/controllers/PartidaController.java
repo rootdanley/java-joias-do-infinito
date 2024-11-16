@@ -3,18 +3,21 @@ package org.joias.projeto.controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,7 +26,7 @@ public class PartidaController {
     @FXML
     private Label nomeJogador1, nomeJogador2, contadorJoiasJogador1, contadorJoiasJogador2, vezJogador1, vezJogador2;
     @FXML
-    private ImageView imagemJogador1, imagemJogador2;
+    private HBox inventarioJogador1, inventarioJogador2; // Inventários visíveis
     @FXML
     private Label joiaMente, joiaEspaco, joiaAlma, joiaPoder, joiaTempo, joiaRealidade;
 
@@ -33,13 +36,12 @@ public class PartidaController {
     private int joiasJogador1 = 0;
     private int joiasJogador2 = 0;
     private String joiaSelecionada; // Armazena a joia que está sendo disputada
-    private Scene telaPartidaScene;
+    private Set<String> inventario1 = new HashSet<>(); // Joias do Jogador 1
+    private Set<String> inventario2 = new HashSet<>(); // Joias do Jogador 2
 
     public void initialize() {
-        if (contadorJoiasJogador1 != null && contadorJoiasJogador2 != null) {
-            contadorJoiasJogador1.setText("0/6");
-            contadorJoiasJogador2.setText("0/6");
-        }
+        contadorJoiasJogador1.setText("0/6");
+        contadorJoiasJogador2.setText("0/6");
         exibirModalInicio();
     }
 
@@ -49,19 +51,6 @@ public class PartidaController {
 
         nomeJogador1.setText(personagemJogador1);
         nomeJogador2.setText(personagemJogador2);
-
-        imagemJogador1.setImage(carregarImagemPersonagem(personagemJogador1));
-        imagemJogador2.setImage(carregarImagemPersonagem(personagemJogador2));
-    }
-
-    public void setTelaPartidaScene(Scene telaPartidaScene) {
-        this.telaPartidaScene = telaPartidaScene;
-    }
-
-    private Image carregarImagemPersonagem(String personagem) {
-        String caminhoImagem = "/" + personagem.toLowerCase().replace(" ", "_") + ".png";
-        var resource = getClass().getResource(caminhoImagem);
-        return (resource != null) ? new Image(resource.toExternalForm()) : null;
     }
 
     private void exibirModalInicio() {
@@ -96,13 +85,23 @@ public class PartidaController {
     }
 
     @FXML
-    private void selecionarJoia() {
-        Label joiaLabel = (Label) joiaMente.getScene().getFocusOwner();
+    private void selecionarJoia(javafx.scene.input.MouseEvent event) {
+        Label joiaLabel = (Label) event.getSource(); // Identifica o Label clicado
         if (joiaLabel != null) {
-            this.joiaSelecionada = joiaLabel.getText();
+            joiaSelecionada = joiaLabel.getText().trim();
+
+            // Padroniza o nome da joia para corresponder às chaves do mock
+            if (joiaSelecionada.startsWith("Joia da")) {
+                joiaSelecionada = joiaSelecionada.replace("Joia da ", "").trim();
+            } else if (joiaSelecionada.startsWith("Joia do")) {
+                joiaSelecionada = joiaSelecionada.replace("Joia do ", "").trim();
+            }
+
+            // Inicia a pergunta
             iniciarPergunta();
         }
     }
+
 
     private void iniciarPergunta() {
         try {
@@ -110,7 +109,7 @@ public class PartidaController {
             Parent root = loader.load();
 
             PerguntaController perguntaController = loader.getController();
-            perguntaController.configurarPergunta(this, joiaSelecionada, telaPartidaScene);
+            perguntaController.configurarPergunta(this, joiaSelecionada);
 
             Stage stage = (Stage) joiaMente.getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -119,26 +118,52 @@ public class PartidaController {
         }
     }
 
-    public void ganharJoia() {
-        if (jogadorAtual == 1) {
-            contadorJoiasJogador1.setText(++joiasJogador1 + "/6");
-            verificarVitoria(joiasJogador1, nomeJogador1.getText());
+    public void ganharJoia(boolean respostaCorreta) {
+        if (respostaCorreta) {
+            if (jogadorAtual == 1) {
+                inventario1.add(joiaSelecionada);
+                contadorJoiasJogador1.setText(++joiasJogador1 + "/6");
+                atualizarInventario(inventarioJogador1, joiaSelecionada);
+            } else {
+                inventario2.add(joiaSelecionada);
+                contadorJoiasJogador2.setText(++joiasJogador2 + "/6");
+                atualizarInventario(inventarioJogador2, joiaSelecionada);
+            }
+            verificarVitoria(); // Verifica se o jogador venceu
         } else {
-            contadorJoiasJogador2.setText(++joiasJogador2 + "/6");
-            verificarVitoria(joiasJogador2, nomeJogador2.getText());
+            // Passa a vez para o próximo jogador
+            jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+            atualizarVezJogador();
         }
-        jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
-        atualizarVezJogador();
+    }
+    public Scene getScene() {
+        // Retorna a cena atual da janela onde o controlador está ativo
+        return nomeJogador1.getScene();
     }
 
-    private void verificarVitoria(int joias, String nomeJogador) {
-        if (joias == 6) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.setHeaderText("Parabéns!");
-            alert.setContentText(nomeJogador + " venceu o jogo!");
-            alert.showAndWait();
+
+    private void atualizarInventario(HBox inventario, String joia) {
+        Text novaJoia = new Text(joia);
+        novaJoia.setStyle("-fx-font-size: 14px; -fx-padding: 5px; -fx-border-color: black; -fx-border-width: 1px;");
+        inventario.getChildren().add(novaJoia); // Adiciona a joia ao inventário visual
+    }
+
+    private void verificarVitoria() {
+        if (joiasJogador1 == 6) {
+            exibirAlerta("Parabéns!", nomeJogador1.getText() + " venceu o jogo!");
+            Platform.exit();
+        } else if (joiasJogador2 == 6) {
+            exibirAlerta("Parabéns!", nomeJogador2.getText() + " venceu o jogo!");
             Platform.exit();
         }
+    }
+
+    private void exibirAlerta(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 }
