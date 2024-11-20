@@ -13,7 +13,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnRanking" layoutX="488.0" layoutY="454.0" mnemonicParsing="false" onAction="#onRankingButtonClick" prefHeight="43.0" prefWidth="305.0" styleClass="secondary-button" stylesheets="@style/style.css" text="VER RANKING" />
+      <Button fx:id="btnRanking" layoutX="488.0" layoutY="454.0" mnemonicParsing="false" onAction="#onRankingButtonClick" prefHeight="43.0" prefWidth="305.0" styleClass="secondary-button" stylesheets="@style/style.css" text="MESTRES DO UNIVERSO" />
       <ImageView fitHeight="271.0" fitWidth="547.0" layoutX="352.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/logo-do-projeto.png" />

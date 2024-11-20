@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.joias.projeto.controllers.VitoriaController"
+      alignment="CENTER" spacing="20">
+    <Label text="Parabéns, você venceu!" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    <Label text="Insira seu nome para registrar a vitória:" style="-fx-font-size: 14px;" />
+    <TextField fx:id="nomeJogadorField" promptText="Nome do jogador" />
+    <Button fx:id="salvarButton" text="Salvar" onAction="#salvarVencedor" />
+</VBox>

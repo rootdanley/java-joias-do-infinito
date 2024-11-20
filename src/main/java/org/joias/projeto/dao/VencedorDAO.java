@@ -27,7 +27,7 @@ public class VencedorDAO {
         ResultSet rs = stmt.executeQuery(sql);
 
         while (rs.next()) {
-            Vencedor vencedor = new Vencedor(rs.getString("nome_jogador"));
+            Vencedor vencedor = new Vencedor(rs.getString("nome"));
             vencedor.setId(rs.getInt("id"));
             vencedores.add(vencedor);
         }

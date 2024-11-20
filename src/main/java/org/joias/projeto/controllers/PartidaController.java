@@ -208,13 +208,33 @@ public class PartidaController {
 
     private void verificarVitoria() {
         if (inventario1.size() == TOTAL_JOIAS) {
-            exibirAlerta("Vitória!", nomeJogador1.getText() + " venceu o jogo!");
-            Platform.exit();
+            abrirModalVitoria(nomeJogador1.getText());
         } else if (inventario2.size() == TOTAL_JOIAS) {
-            exibirAlerta("Vitória!", nomeJogador2.getText() + " venceu o jogo!");
-            Platform.exit();
+            abrirModalVitoria(nomeJogador2.getText());
         }
     }
+
+    private void abrirModalVitoria(String nomeJogador) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/joias/projeto/vitoria.fxml"));
+            Parent root = loader.load();
+
+            VitoriaController vitoriaController = loader.getController();
+            vitoriaController.setNomeJogador(nomeJogador);
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Jogador Vencedor");
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+            // Fecha a aplicação após salvar o vencedor
+            Platform.exit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void exibirAlerta(String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
