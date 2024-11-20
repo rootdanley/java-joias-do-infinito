@@ -12,6 +12,7 @@ public class MainApplication extends Application {
         SceneManager.setStage(primaryStage);
         SceneManager.changeScene("/org/joias/projeto/inicio.fxml");
     }
+
     public static void main(String[] args) {
         launch();
     }

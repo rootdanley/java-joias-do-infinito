@@ -8,7 +8,7 @@ public class TestConnection {
         try {
             Connection conn = DatabaseConnection.getConnection();
             if (conn != null) {
-                System.out.println("Conexão bem-sucedida com o banco de dados AWS RDS!");
+                System.out.println("Conexão bem-sucedida com o banco de dados");
                 conn.close();
             }
         } catch (SQLException e) {

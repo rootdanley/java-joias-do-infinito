@@ -31,8 +31,8 @@
         </HBox>
 
         <!-- Inventários dos Jogadores -->
-        <HBox fx:id="inventarioJogador1" layoutX="20" layoutY="140" spacing="10" />
-        <HBox fx:id="inventarioJogador2" layoutX="700" layoutY="140" spacing="10" />
+        <HBox fx:id="inventarioJogador1" layoutX="20" layoutY="190" spacing="10" />
+        <HBox fx:id="inventarioJogador2" layoutX="700" layoutY="190" spacing="10" />
 
         <!-- Separador -->
         <HBox layoutX="20" layoutY="200" prefWidth="960" style="-fx-border-color: gray; -fx-border-width: 0 0 2 0;" />
